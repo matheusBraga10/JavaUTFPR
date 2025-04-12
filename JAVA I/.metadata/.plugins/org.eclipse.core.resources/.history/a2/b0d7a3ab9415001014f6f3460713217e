@@ -1,0 +1,8 @@
+package com.exercicios.java.exercicio05;
+
+public class Leitura {
+	
+	public  String entDados(String string) {
+		return string;
+	}
+}

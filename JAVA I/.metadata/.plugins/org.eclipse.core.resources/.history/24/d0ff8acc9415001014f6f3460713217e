@@ -1,0 +1,24 @@
+package com.exercicios.java.exercicio05;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Leitura {
+	
+	public  String entDados(String string) {
+		System.out.println(string);
+		
+		InputStreamReader reader = new InputStreamReader(System.in);
+		BufferedReader bufferedReader = new BufferedReader(reader);
+		
+		String ret = "";
+		
+		try {
+			ret = bufferedReader.readLine();
+		} catch (IOException e) {
+			System.out.println("\nErro de sistema");
+		}
+		return ret;
+	}
+}

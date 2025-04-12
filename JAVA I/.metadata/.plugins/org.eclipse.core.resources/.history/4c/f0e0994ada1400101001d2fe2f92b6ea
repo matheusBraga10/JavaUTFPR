@@ -1,0 +1,41 @@
+package com.exercicios.java.exercicio05;
+
+public final class Carga extends Veiculo implements Calcular {
+    private int cargaMax;
+    private int tara;
+
+	public Carga(String placa, String marca, String modelo, String cor, float velocMax, int qtdRodas, Motor motor,
+			int cargaMax, int tara) {
+		super(placa, marca, modelo, cor, velocMax, qtdRodas, motor);
+		this.cargaMax = cargaMax;
+		this.tara = tara;
+	}
+
+	public int getCargaMax() {
+		return cargaMax;
+	}
+
+	public final void setCargaMax(int cargaMax) {
+		this.cargaMax = cargaMax;
+	}
+
+	public int getTara() {
+		return tara;
+	}
+
+	public final void setTara(int tara) {
+		this.tara = tara;
+	}
+
+	@Override
+	public float calcVel(float velocMax) {
+		return velocMax*1000;
+	}
+
+	@Override
+	public int calcular() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
