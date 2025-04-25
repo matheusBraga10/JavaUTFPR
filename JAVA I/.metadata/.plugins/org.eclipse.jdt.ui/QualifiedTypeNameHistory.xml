@@ -17,4 +17,10 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.springframework.aop.ThrowsAdvice"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Passeio"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.VeicExistException"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.BDVeiculos"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.VelocException"/>
 </qualifiedTypeNameHistroy>
