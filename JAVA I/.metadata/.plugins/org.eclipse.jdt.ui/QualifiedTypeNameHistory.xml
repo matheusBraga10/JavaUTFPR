@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.exercicios.java.exercicio04.Carga"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio04.Passeio"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio04.Motor"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
@@ -17,10 +16,14 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.springframework.aop.ThrowsAdvice"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
-    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Passeio"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.VeicExistException"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.BDVeiculos"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Passeio"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.VelocException"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio04.Carga"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Carga"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Veiculo"/>
+    <fullyQualifiedTypeName name="ch.qos.logback.core.net.SyslogOutputStream"/>
 </qualifiedTypeNameHistroy>

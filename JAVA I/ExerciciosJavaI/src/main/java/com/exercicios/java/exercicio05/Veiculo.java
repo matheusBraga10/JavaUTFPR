@@ -1,5 +1,7 @@
 package com.exercicios.java.exercicio05;
 
+import com.exercicios.java.exercicio07.VelocException;
+
 public abstract class Veiculo {
 
     private String placa;
@@ -56,7 +58,7 @@ public abstract class Veiculo {
 		return velocMax;
 	}
 
-	public final void setVelocMax(float velocMax) {
+	public final void setVelocMax(float velocMax)  {
 		this.velocMax = velocMax;
 	}
 
