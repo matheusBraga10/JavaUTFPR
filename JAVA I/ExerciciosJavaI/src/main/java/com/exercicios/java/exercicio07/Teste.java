@@ -1,15 +1,14 @@
 package com.exercicios.java.exercicio07;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Teste {
 
 	private static Passeio passeio = new Passeio();
 	private static Carga carga = new Carga();
-	private static List<Passeio> listaPasseio = new ArrayList<>();
-	private static List<Carga> listaCarga = new ArrayList<>();
-	private static Leitura leitura = new Leitura();
+
+	private static Passeio listaPasseio[] = new Passeio[5];
+	private static Carga listaCarga[] = new Carga[5];
+
+	private static Leitura leitura = new Leitura();	
 
 	public static void main(String arg[]) throws VelocException {
 
@@ -78,7 +77,7 @@ public class Teste {
 		try {
 			for(Carga c : listaCarga) {
 				if(carga.getPlaca().equalsIgnoreCase(c.getPlaca())) {
-					imprimeCarga(c, listaCarga.size());
+					imprimeCarga(c, listaCarga.length);
 				}
 			}
 		} catch (Exception e) {
@@ -90,7 +89,7 @@ public class Teste {
 		try {
 			for(Passeio p : listaPasseio) {
 				if(passeio.getPlaca().equalsIgnoreCase(p.getPlaca())) {
-					imprimePasseio(p, listaPasseio.size());
+					imprimePasseio(p, listaPasseio.length);
 				}
 			}
 		} catch (Exception e) {
@@ -99,31 +98,31 @@ public class Teste {
 	}
 
 	private static void imprimeTodosCarga() {
-		for(Carga c : listaCarga) {
-			if(c != null) {
-				imprimeCarga(c, listaCarga.size());
+		for(int i = 0; i < listaCarga.length ; i++) {
+			if(listaCarga[i] != null) {
+				imprimeCarga(listaCarga[i], i);
 			}
 		}
 	}
 
 	private static void imprimeTodosPasseio() {
-		for(Passeio p : listaPasseio) {
-			if(p != null) {
-				imprimePasseio(p, listaPasseio.size());
+		for(int i = 0; i < listaPasseio.length ; i++) {
+			if(listaPasseio[i] != null) {
+				imprimePasseio(listaPasseio[i], i);
 			}
 		}
 	}
 
 	private static void cadastraVeiculosCarga(int opcao) throws VelocException {
-		listaCarga.add(carga);
-		for(Carga carga : listaCarga) {
-			if(listaCarga.size() > 4) {
+		for(int i = achaVetorVazio(listaCarga); i< listaCarga.length ; i++) {
+			if(i >= listaCarga.length) {
 				leitura.entDados("\nVetor do Veiculo de " + defineTipoVeiculo(opcao) + " esta cheio! - press <ENTER>");
 				System.out.println("================================================================================");
 				break;
 			}
-			cadastroCarga(carga);
-			if(listaPasseio == null || retornaDadosCadastro(opcao, listaPasseio.size()).equalsIgnoreCase("N") ) {
+			carga = new Carga();
+			listaCarga[i] = cadastroCarga(carga);
+			if(listaPasseio == null || retornaDadosCadastro(opcao, i).equalsIgnoreCase("N") ) {
 				leitura.entDados("");
 				break;
 			}
@@ -131,23 +130,31 @@ public class Teste {
 	}
 
 	private static void cadastraVeiculosPasseio(int opcao) throws VelocException {
-		listaPasseio.add(passeio);
-		for(Passeio passeio : listaPasseio) {
-			if(listaPasseio.size() > 4) {
+		for(int i = achaVetorVazio(listaPasseio); i < listaPasseio.length ; i++) {
+			if(i >= listaCarga.length) {
 				leitura.entDados("\nVetor do Veiculo de " + defineTipoVeiculo(opcao) + " esta cheio! - press <ENTER>");
 				System.out.println("================================================================================");
 				break;
 			}
-			cadastroPasseio(passeio);
-			if(retornaDadosCadastro(opcao, listaPasseio.size()).equalsIgnoreCase("N") ) {
+			passeio = new Passeio();
+			listaPasseio[i] = cadastroPasseio(passeio);
+			if(listaPasseio == null || retornaDadosCadastro(opcao, i).equalsIgnoreCase("N") ) {
 				leitura.entDados("");
 				break;
 			}
 		}
 	}
 
+	private static int achaVetorVazio(Object vetor[]) {
+		for(int i = 0; i < vetor.length; i++) {
+			if(vetor[i] == null) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
-	private static List<Passeio> cadastroPasseio(Passeio passeio) throws VelocException {
+	private static Passeio cadastroPasseio(Passeio passeio) {
 		System.out.println("\n\n==========================================");
 		System.out.println("Cadastro de Veiculos de Passeio");
 		System.out.println("\n\n==========================================");
@@ -159,24 +166,28 @@ public class Teste {
 			passeio.setCor(leitura.entDados("Cor: "));
 			try {
 				passeio.setQtdRodas(Integer.parseInt(leitura.entDados("Quantidade de rodas: ")));
-				passeio.setVelocMax(Integer.parseInt(leitura.entDados("velocidade Maxima: ")));
-				if(passeio.getVelocMax() <= 80 || passeio.getVelocMax() > 110) {
-					passeio.setVelocMax(100);
-					throw new VelocException("A velocidade máxima está fora dos limites brasileiros.");
+				try {
+					passeio.setVelocMax(Integer.parseInt(leitura.entDados("velocidade Maxima: ")));
+				} catch (VelocException ve) {
+					try {
+						passeio.setVelocMax(100);
+					} catch (VelocException e) {
+						e.printStackTrace();
+					}
+					System.out.println(ve.getMessage());
 				}
 				passeio.getMotor().setPotencia(Integer.parseInt(leitura.entDados("Potencia do motor: ")));
 				passeio.getMotor().setQtdPist(Integer.parseInt(leitura.entDados("Quantidade de Pistoes do Motor: ")));
 				passeio.setQtdPassageiros(Integer.parseInt(leitura.entDados("Quantidade de Passageiros: ")));
-				listaPasseio.add(passeio);
 			} catch (NumberFormatException e) {
 				System.out.println("\nCaracter nao e do tipo numeral " + e);
 			}
-			return listaPasseio;
+			return passeio;
 		}
 		return null;
 	}
 
-	private static List<Carga> cadastroCarga(Carga carga) throws VelocException {
+	private static Carga cadastroCarga(Carga carga) {
 		System.out.println("\n\n==========================================");
 		System.out.println("Cadastro de Veiculos de Carga");
 		System.out.println("\n\n==========================================");
@@ -188,43 +199,45 @@ public class Teste {
 			carga.setCor(leitura.entDados("Cor: "));
 			try {
 				carga.setQtdRodas(Integer.parseInt(leitura.entDados("Quantidade de rodas: ")));
-				carga.setVelocMax(Integer.parseInt(leitura.entDados("velocidade Maxima: ")));
-				if(carga.getCargaMax() <= 80 || carga.getCargaMax() > 110) {
-					carga.setVelocMax(90);
-					throw new VelocException("A velocidade máxima está fora dos limites brasileiros.");
+				try {
+					carga.setVelocMax(Integer.parseInt(leitura.entDados("velocidade Maxima: ")));
+				} catch (VelocException ve) {
+					try {
+						carga.setVelocMax(90);
+					} catch (VelocException e) {
+						e.printStackTrace();
+					}
+					System.out.println(ve.getMessage());
 				}
 				carga.getMotor().setPotencia(Integer.parseInt(leitura.entDados("Potencia do motor: ")));
 				carga.getMotor().setQtdPist(Integer.parseInt(leitura.entDados("Quantidade de Pistoes do Motor: ")));
 				carga.setTara(Integer.parseInt(leitura.entDados("Tara kg: ")));
 				carga.setCargaMax(Integer.parseInt(leitura.entDados("Carga Maxima kg: ")));
-				listaCarga.add(carga);
-			} catch (NumberFormatException e) {
-				System.out.println("\nCaracter nao e do tipo numeral " + e);
+			} catch (NumberFormatException nfe) {
+				System.out.println("\nCaracter nao e do tipo numeral " + nfe);
 			}
-			return listaCarga;
+			return carga;
 		}
 		return null;
 	}
 
 	private static Boolean verificaPlaca(String p) {
-		for(Veiculo passeio : listaPasseio) {
+		for(Passeio passeio : listaPasseio) {
 			try {
 				if(p.equalsIgnoreCase(passeio.getPlaca())) {
 					leitura.entDados("\n\nJa existe um Veiculo de Passeio no sistema com a mesma placa - press <ENTER>");
 					return false;
 				}
 			} catch (Exception e) {
-				return true;
 			}
 		}
-		for(Veiculo carga : listaCarga) {
+		for(Carga carga : listaCarga) {
 			try {
 				if(p.equalsIgnoreCase(carga.getPlaca())) {
 					leitura.entDados("\n\nJa existe um Veiculo de Carga no sistema com a mesma placa - press <ENTER>");
 					return false;
 				}
 			} catch (Exception e) {
-				return true;
 			}
 		} 
 		return true;
@@ -247,7 +260,7 @@ public class Teste {
 	}
 
 	private static void imprimePasseio(Passeio passeio, int i) {
-		System.out.println("\nVeiculo de Passeio armazenado no endereco " + i + "(do VetorPasseio)");
+		System.out.println("\nVeiculo de Passeio armazenado no endereco " + i + " (do VetorPasseio)");
 		System.out.println("\nPlaca: " + passeio.getPlaca());
 		System.out.println("\nMarca: " + passeio.getMarca());
 		System.out.println("\nModelo: " + passeio.getModelo());

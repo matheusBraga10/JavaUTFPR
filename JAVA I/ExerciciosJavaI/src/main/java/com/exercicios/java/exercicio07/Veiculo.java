@@ -57,10 +57,11 @@ public abstract class Veiculo {
 	}
 
 	public final void setVelocMax(float velocMax) throws VelocException {
-		if(velocMax <= 80 || velocMax > 110) {
+		if(velocMax > 80 && velocMax <= 110) {
+			this.velocMax = velocMax;
+		} else {
 			throw new VelocException("A velocidade máxima está fora dos limites brasileiros.");
 		}
-		this.velocMax = velocMax;
 	}
 
 	public final int getQtdRodas() {
