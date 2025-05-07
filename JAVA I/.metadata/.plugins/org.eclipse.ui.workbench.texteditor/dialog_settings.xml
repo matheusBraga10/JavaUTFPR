@@ -11,6 +11,7 @@
 		<item value="passeio2"/>
 	</list>
 	<list key="searchhistory">
+		<item value="imprimeCarga"/>
 		<item value="cadastroCarga"/>
 		<item value="cadastroPasseio"/>
 		<item value="verificaPlaca"/>

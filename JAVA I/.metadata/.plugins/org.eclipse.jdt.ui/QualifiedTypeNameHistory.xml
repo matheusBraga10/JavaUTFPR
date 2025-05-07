@@ -26,4 +26,6 @@
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Carga"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio07.Veiculo"/>
     <fullyQualifiedTypeName name="ch.qos.logback.core.net.SyslogOutputStream"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio08.Passeio"/>
+    <fullyQualifiedTypeName name="com.exercicios.java.exercicio08.Carga"/>
 </qualifiedTypeNameHistroy>
