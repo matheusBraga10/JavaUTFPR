@@ -1,7 +1,0 @@
-package com.exercicios.java.exercicio07;
-
-public class BDVeiculos {
-
-	private Passeio listaPasseio[] = new Passeio[5];
-	private Carga listaCarga[] = new Carga[5];
-}
