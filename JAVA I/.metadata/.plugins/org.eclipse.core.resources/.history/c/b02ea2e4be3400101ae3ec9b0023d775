@@ -1,0 +1,188 @@
+package com.exercicios.java.exercicio09.janelasGui.passeio;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+import com.exercicios.java.exercicio09.backEnd.BDVeiculos;
+import com.exercicios.java.exercicio09.backEnd.Passeio;
+import com.exercicios.java.exercicio09.backEnd.VelocException;
+
+public class JanelaCadastroPasseio implements ActionListener{
+
+	private static JFrame janelaCadastroPasseio = new JFrame();
+
+	private static JLabel labelPlaca = new JLabel();
+	private static JLabel labelMarca = new JLabel();
+	private static JLabel labelModelo = new JLabel();
+	private static JLabel labelCor = new JLabel();
+	private static JLabel labelQtdRodas= new JLabel();
+	private static JLabel labelVelMax = new JLabel();
+	private static JLabel labelQtdPist = new JLabel();
+	private static JLabel labelPotencia = new JLabel();
+	private static JLabel labelQtdPassageiros = new JLabel();
+
+	private static JTextField textPlaca = new JTextField(20);
+	private static JTextField textMarca = new JTextField(20);
+	private static JTextField textModelo = new JTextField(20);
+	private static JTextField textCor = new JTextField(20);
+	private static JTextField textQtdRodas= new JTextField(20);
+	private static JTextField textVelMax = new JTextField(20);
+	private static JTextField textQtdPist = new JTextField(20);
+	private static JTextField textPotencia = new JTextField(20);
+	private static JTextField textQtdPassageiros = new JTextField(20);
+
+	private static JButton buttonCadastrar = new JButton();
+	private static JButton buttonLimpar = new JButton();
+	private static JButton buttonNovo = new JButton();
+	private static JButton buttonSair = new JButton();
+
+	private static JanelaCadastroPasseio janelaCadPasseio = new JanelaCadastroPasseio();
+	private  Passeio passeio;
+
+	public void carregarJanelaCadastroPasseio() {
+
+		janelaCadastroPasseio.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		janelaCadastroPasseio.setSize(270,600);
+		janelaCadastroPasseio.setTitle("VEICULOS DE PASSEIO");
+
+		labelPlaca.setText("Placa: ");
+		textPlaca.setText("");
+		labelMarca.setText("Marca: ");
+		textMarca.setText("");
+		labelModelo.setText("Modelo: ");
+		textModelo.setText("");
+		labelCor.setText("Cor: ");
+		textCor.setText("");
+		labelQtdRodas.setText("Quantidade de rodas: ");
+		textQtdRodas.setText("");
+		labelVelMax.setText("Velocidade Máxima: ");
+		textVelMax.setText("");
+		labelQtdPist.setText("Quantidade de Pistões: ");
+		textQtdPist.setText("");
+		labelPotencia.setText("Potencia: ");
+		textPotencia.setText("");
+		labelQtdPassageiros.setText("Quantidade de Passageiros: ");
+		textQtdPassageiros.setText("");
+
+		buttonCadastrar.setText("CADASTRAR");
+		buttonCadastrar.setSize(10, 50);
+		buttonLimpar.setText("LIMPAR");
+		buttonLimpar.setSize(10, 50);
+		buttonNovo.setText("NOVO");
+		buttonNovo.setSize(10, 50);
+		buttonSair.setText("SAIR");
+		buttonSair.setSize(10, 50);
+
+		janelaCadastroPasseio.add(labelPlaca);
+		janelaCadastroPasseio.add(textPlaca);
+		janelaCadastroPasseio.add(labelMarca);
+		janelaCadastroPasseio.add(textMarca);
+		janelaCadastroPasseio.add(labelModelo);
+		janelaCadastroPasseio.add(textModelo);
+		janelaCadastroPasseio.add(labelCor);
+		janelaCadastroPasseio.add(textCor);
+		janelaCadastroPasseio.add(labelQtdRodas);
+		janelaCadastroPasseio.add(textQtdRodas);
+		janelaCadastroPasseio.add(labelVelMax);
+		janelaCadastroPasseio.add(textVelMax);
+		janelaCadastroPasseio.add(labelQtdPist);
+		janelaCadastroPasseio.add(textQtdPist);
+		janelaCadastroPasseio.add(labelPotencia);
+		janelaCadastroPasseio.add(textPotencia);
+		janelaCadastroPasseio.add(labelQtdPassageiros);
+		janelaCadastroPasseio.add(textQtdPassageiros);
+
+		janelaCadastroPasseio.add(buttonCadastrar);
+		janelaCadastroPasseio.add(buttonLimpar);
+		janelaCadastroPasseio.add(buttonNovo);
+		janelaCadastroPasseio.add(buttonSair);
+
+		buttonCadastrar.addActionListener(janelaCadPasseio);
+		buttonLimpar.addActionListener(janelaCadPasseio);
+		buttonNovo.addActionListener(janelaCadPasseio);
+		buttonSair.addActionListener(janelaCadPasseio);
+
+		janelaCadastroPasseio.setLayout(new FlowLayout());
+		janelaCadastroPasseio.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource().equals(buttonCadastrar)) {
+			passeio = new Passeio();
+			passeio.setPlaca(textPlaca.getText());
+			if(passeio.getPlaca().isEmpty() || passeio.getPlaca().isBlank()) {
+				JOptionPane.showMessageDialog(null,"Informe a placa do veículo." ,"ERRO",  JOptionPane.ERROR_MESSAGE);
+				textPlaca.requestFocus();
+				return;
+			}
+			passeio.setMarca(textMarca.getText());
+			passeio.setModelo(textModelo.getText());
+			passeio.setCor(textCor.getText());
+			try {
+				passeio.setQtdRodas(Integer.parseInt(textQtdRodas.getText()));
+				passeio.setVelocMax(Integer.parseInt(textVelMax.getText()));
+				passeio.getMotor().setQtdPist(Integer.parseInt(textQtdPist.getText()));
+				passeio.getMotor().setPotencia(Integer.parseInt(textPotencia.getText()));
+				passeio.setQtdPassageiros(Integer.parseInt(textQtdPassageiros.getText()));
+			} catch (NumberFormatException e1) {
+				JOptionPane.showMessageDialog(null,"Para os campos 'Quantidade de rodas', 'Velocidade Máxima', 'Qauntidade de Pistões', 'Potência',"
+						+ " 'Quantidade de Passageiros' \nDeve ser informado valores numerais. Favor alterar." ,
+						"ERRO",  JOptionPane.ERROR_MESSAGE);
+				e1.printStackTrace();
+				return;
+			} catch (VelocException e1) {
+				if(passeio.getVelocMax() > 80 || passeio.getVelocMax() <= 110) {
+					JOptionPane.showMessageDialog(null,"A velocidade máxima está fora dos limites brasileiros.\nDeve estar entre 80 km/h e 110 km/h." ,
+							"ERRO",  JOptionPane.ERROR_MESSAGE);
+				}
+				e1.printStackTrace();
+				return;
+			}
+			if(BDVeiculos.verificaPlaca(passeio.getPlaca()) == true) {
+				BDVeiculos.cadastroPasseio(passeio);
+				JOptionPane.showMessageDialog(null,"Registro cadastrado com sucesso." ,
+						"INFORMAÇÃO",  JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null,"Esta placa já se encontra cadastrada no sistema.\nFavor informar nova placa." 
+						,"ERRO",  JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		if(e.getSource().equals(buttonLimpar)) {
+			textPlaca.setText("");
+			textMarca.setText("");
+			textModelo.setText("");
+			textCor.setText("");
+			textQtdRodas.setText("");
+			textVelMax.setText("");
+			textQtdPist.setText("");
+			textPotencia.setText("");
+			textQtdPassageiros.setText("");
+			textPlaca.requestFocus();
+		}
+		if(e.getSource().equals(buttonNovo)) {
+			passeio = new Passeio();
+			textPlaca.setText("");
+			textMarca.setText("");
+			textModelo.setText("");
+			textCor.setText("");
+			textQtdRodas.setText("");
+			textVelMax.setText("");
+			textQtdPist.setText("");
+			textPotencia.setText("");
+			textQtdPassageiros.setText("");
+			textPlaca.requestFocus();
+		}
+		if(e.getSource().equals(buttonSair)) {
+			janelaCadastroPasseio.dispose();
+		}
+	}
+}

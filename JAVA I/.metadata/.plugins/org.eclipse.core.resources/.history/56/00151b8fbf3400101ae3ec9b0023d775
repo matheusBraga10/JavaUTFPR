@@ -1,0 +1,73 @@
+package com.exercicios.java.exercicio09.janelasGui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import com.exercicios.java.exercicio09.janelasGui.carga.JanelaVeiculosCarga;
+import com.exercicios.java.exercicio09.janelasGui.passeio.JanelaVeiculosPasseio;
+
+public class JanelaInicial implements ActionListener{
+
+	private static JFrame janelaInicial = new JFrame();
+	private static JLabel labelInicial = new JLabel();
+	private static JButton buttonCarga = new JButton();
+	private static JButton buttonPasseio = new JButton();
+	private static JButton buttonSair = new JButton();
+	private static JanelaInicial inicial = new JanelaInicial();
+	private static JanelaVeiculosPasseio janelaVeiculosPasseio = new JanelaVeiculosPasseio();
+	private static JanelaVeiculosCarga janelaVeiculosCarga = new JanelaVeiculosCarga();
+
+
+	public void carregarJanelaInicial() {
+
+		janelaInicial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janelaInicial.setSize(600,300);
+		janelaInicial.setTitle("SISTEMA DE GERENCIAMENTO DE VEICULOS");
+
+		labelInicial.setText("Clique em uma das opções para começar.");
+		buttonCarga.setText("CARGA");
+		buttonCarga.setSize(10, 50);
+		buttonPasseio.setText("PASSEIO");
+		buttonPasseio.setSize(10, 50);
+		buttonSair.setText("SAIR");
+		buttonSair.setSize(10, 50);
+
+		janelaInicial.add(labelInicial);
+		janelaInicial.add(buttonCarga);
+		janelaInicial.add(buttonPasseio);
+		janelaInicial.add(buttonSair);
+
+		buttonCarga.addActionListener(inicial);
+		buttonPasseio.addActionListener(inicial);
+		buttonSair.addActionListener(inicial);
+
+		janelaInicial.setLayout(new FlowLayout());
+		janelaInicial.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent evt) {
+		if(evt.getSource().equals(buttonCarga)) {
+			abreJanCarga();
+		}
+		if(evt.getSource().equals(buttonPasseio)) {
+			janelaVeiculosPasseio.carregarJanelaVeiculosPasseio();
+		}
+		if(evt.getSource().equals(buttonSair)) {
+			JOptionPane.showMessageDialog(null,"SISTEMA FINALIZADO." , "INFORMAÇÃO",  JOptionPane.INFORMATION_MESSAGE);
+			janelaInicial.dispose();
+		}
+
+	}
+
+	private void abreJanCarga() {
+		janelaVeiculosCarga.carregarJanelaVeiculosCarga();
+	}
+
+}

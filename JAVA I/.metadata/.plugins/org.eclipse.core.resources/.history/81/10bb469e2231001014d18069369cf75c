@@ -1,0 +1,46 @@
+package com.exercicios.java.exercicio09;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class JanelaInicial implements ActionListener{
+	
+	private static JFrame janelaInicial = new JFrame();
+	private static JLabel labelInicial = new JLabel();
+	private static JButton buttonCarga = new JButton();
+	private static JButton buttonPasseio = new JButton();
+	private static JanelaInicial inicial = new JanelaInicial();
+	
+	public void carregarJanelaInicial() {
+		
+		janelaInicial.setSize(600,300);
+		janelaInicial.setTitle("SISTEMA DE GERENCIAMENTO DE VEICULOS");
+		
+		labelInicial.setText("Clique em uma das opções para começar.");
+		buttonCarga.setText("CARGA");
+		buttonCarga.setSize(10, 50);
+		buttonPasseio.setText("PASSEIO");
+		buttonPasseio.setSize(10, 50);
+		
+		janelaInicial.add(labelInicial);
+		janelaInicial.add(buttonCarga);
+		janelaInicial.add(buttonPasseio);
+		
+		buttonCarga.addActionListener(inicial);
+		buttonPasseio.addActionListener(inicial);
+		
+		janelaInicial.setLayout(new FlowLayout());
+		janelaInicial.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent evt) {
+		
+	}
+	
+}

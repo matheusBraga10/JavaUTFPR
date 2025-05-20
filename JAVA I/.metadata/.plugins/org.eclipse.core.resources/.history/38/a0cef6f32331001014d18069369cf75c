@@ -1,0 +1,6 @@
+package com.exercicios.java.exercicio09;
+
+public interface Calcular2 {
+	
+	public int calcular();
+}

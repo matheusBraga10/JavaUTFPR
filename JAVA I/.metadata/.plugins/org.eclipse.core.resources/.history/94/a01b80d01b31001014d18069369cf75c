@@ -1,0 +1,29 @@
+package com.exercicios.java.exercicio09;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class JanelaInicial implements ActionListener{
+	
+	
+	private JFrame janelaInicial = new JFrame();
+	private JLabel labelPasseio = new JLabel();
+	private JLabel labelCarga = new JLabel();
+	
+	public void carregarJanelaInicial() {
+		janelaInicial.setSize(400,300);
+		janelaInicial.setVisible(true);
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

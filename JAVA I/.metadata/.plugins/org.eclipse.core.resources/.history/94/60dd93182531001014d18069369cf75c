@@ -1,0 +1,52 @@
+package com.exercicios.java.exercicio09.janelasGui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class JanelaVeiculosPasseio implements ActionListener{
+
+	private static JFrame janelaInicial = new JFrame();
+	private static JButton buttonCadastro = new JButton();
+	private static JButton buttonConsulta = new JButton();
+	private static JButton buttonImprime = new JButton();
+	private static JButton buttonSair = new JButton();
+	private static JanelaVeiculosPasseio janelaVeiculosPasseio = new JanelaVeiculosPasseio();
+	
+public void carregarJanelaVeiculosPasseio() {
+		
+		janelaInicial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janelaInicial.setSize(600,300);
+		janelaInicial.setTitle("VEICULOS DE PASSEIO");
+		
+		labelInicial.setText("Clique em uma das opções para começar.");
+		buttonCarga.setText("CARGA");
+		buttonCarga.setSize(10, 50);
+		buttonPasseio.setText("PASSEIO");
+		buttonPasseio.setSize(10, 50);
+		buttonSair.setText("SAIR");
+		buttonSair.setSize(10, 50);
+		
+		janelaInicial.add(labelInicial);
+		janelaInicial.add(buttonCarga);
+		janelaInicial.add(buttonPasseio);
+		janelaInicial.add(buttonSair);
+		
+		buttonCarga.addActionListener(inicial);
+		buttonPasseio.addActionListener(inicial);
+		buttonSair.addActionListener(inicial);
+		
+		janelaInicial.setLayout(new FlowLayout());
+		janelaInicial.setVisible(true);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
