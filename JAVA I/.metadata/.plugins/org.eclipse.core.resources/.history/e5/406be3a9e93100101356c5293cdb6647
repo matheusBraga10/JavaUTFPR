@@ -1,0 +1,167 @@
+package com.exercicios.java.exercicio09.janelasGui.carga;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+import com.exercicios.java.exercicio09.backEnd.BDVeiculos;
+import com.exercicios.java.exercicio09.backEnd.Carga;
+
+public class JanelaConsultaCarga implements ActionListener{
+
+	private static JFrame janelaConsultaCarga = new JFrame();
+
+	private static JLabel labelPlaca = new JLabel();
+	private static JLabel labelMarca = new JLabel();
+	private static JLabel labelModelo = new JLabel();
+	private static JLabel labelCor = new JLabel();
+	private static JLabel labelQtdRodas= new JLabel();
+	private static JLabel labelVelMax = new JLabel();
+	private static JLabel labelQtdPist = new JLabel();
+	private static JLabel labelPotencia = new JLabel();
+	private static JLabel labelTara = new JLabel();
+	private static JLabel labelCargaMax = new JLabel();
+
+	private static JTextField textPlaca = new JTextField(20);
+	private static JTextField textMarca = new JTextField(20);
+	private static JTextField textModelo = new JTextField(20);
+	private static JTextField textCor = new JTextField(20);
+	private static JTextField textQtdRodas= new JTextField(20);
+	private static JTextField textVelMax = new JTextField(20);
+	private static JTextField textQtdPist = new JTextField(20);
+	private static JTextField textPotencia = new JTextField(20);
+	private static JTextField textTara = new JTextField(20);
+	private static JTextField textCargaMax = new JTextField(20);
+
+	private static JButton buttonConsulta = new JButton();
+	private static JButton buttonExcluir = new JButton();
+	private static JButton buttonSair = new JButton();
+
+	private static JanelaConsultaCarga janelaConsCarga = new JanelaConsultaCarga();
+	private List<Carga> listaCarga = BDVeiculos.getListaCarga();
+	private  Carga carga;
+
+	public void carregarJanelaConsultaCarga() {
+
+		janelaConsultaCarga.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		janelaConsultaCarga.setSize(300,500);
+		janelaConsultaCarga.setTitle("VEICULOS DE CARGA");
+
+		labelPlaca.setText("Inform a Placa: ");
+		textPlaca.setText("");
+		labelMarca.setText("Marca: ");
+		textMarca.setText("");
+		textMarca.setEditable(false);
+		labelModelo.setText("Modelo: ");
+		textModelo.setText("");
+		textModelo.setEditable(false);
+		labelCor.setText("Cor: ");
+		textCor.setText("");
+		textCor.setEditable(false);
+		labelQtdRodas.setText("Quantidade de rodas: ");
+		textQtdRodas.setText("");
+		textQtdRodas.setEditable(false);
+		labelVelMax.setText("Velocidade Máxima: ");
+		textVelMax.setText("");
+		textVelMax.setEditable(false);
+		labelQtdPist.setText("Quantidade de Pistões: ");
+		textQtdPist.setText("");
+		textQtdPist.setEditable(false);
+		labelPotencia.setText("Potencia: ");
+		textPotencia.setText("");
+		textPotencia.setEditable(false);
+		labelTara.setText("Tara: ");
+		textTara.setText("");
+		textTara.setEditable(false);
+		labelCargaMax.setText("Carga Máxima: ");
+		textCargaMax.setText("");
+		textCargaMax.setEditable(false);
+
+		buttonConsulta.setText("CONSULTAR");
+		buttonConsulta.setSize(10, 50);
+		buttonExcluir.setText("EXCLUIR");
+		buttonExcluir.setSize(10, 50);
+		buttonSair.setText("SAIR");
+		buttonSair.setSize(10, 50);
+
+		janelaConsultaCarga.add(labelPlaca);
+		janelaConsultaCarga.add(textPlaca);
+		janelaConsultaCarga.add(labelMarca);
+		janelaConsultaCarga.add(textMarca);
+		janelaConsultaCarga.add(labelModelo);
+		janelaConsultaCarga.add(textModelo);
+		janelaConsultaCarga.add(labelCor);
+		janelaConsultaCarga.add(textCor);
+		janelaConsultaCarga.add(labelQtdRodas);
+		janelaConsultaCarga.add(textQtdRodas);
+		janelaConsultaCarga.add(labelVelMax);
+		janelaConsultaCarga.add(textVelMax);
+		janelaConsultaCarga.add(labelQtdPist);
+		janelaConsultaCarga.add(textQtdPist);
+		janelaConsultaCarga.add(labelPotencia);
+		janelaConsultaCarga.add(textPotencia);
+		janelaConsultaCarga.add(labelCargaMax);
+		janelaConsultaCarga.add(textCargaMax);
+
+		janelaConsultaCarga.add(buttonConsulta);
+		janelaConsultaCarga.add(buttonExcluir);
+		janelaConsultaCarga.add(buttonSair);
+
+		buttonConsulta.addActionListener(janelaConsCarga);
+		buttonExcluir.addActionListener(janelaConsCarga);
+		buttonSair.addActionListener(janelaConsCarga);
+
+		janelaConsultaCarga.setLayout(new FlowLayout());
+		janelaConsultaCarga.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource().equals(buttonConsulta)) {
+			carga = new Carga();
+			carga.setPlaca(textPlaca.getText());
+			for(Carga p : listaCarga) {
+				if(carga.getPlaca().equalsIgnoreCase(p.getPlaca())) {
+					carga = p;
+				}
+			}
+			textMarca.setText(carga.getMarca());
+			textModelo.setText(carga.getModelo());
+			textCor.setText(carga.getCor());
+			textQtdRodas.setText(String.valueOf(carga.getQtdRodas()));
+			textVelMax.setText(String.valueOf(carga.getVelocMax()));
+			textQtdPist.setText(String.valueOf(carga.getMotor().getQtdPist()));
+			textPotencia.setText(String.valueOf(carga.getMotor().getPotencia()));
+			textCargaMax.setText(String.valueOf(carga.getQtdPassageiros()));
+		}
+		if(e.getSource().equals(buttonExcluir)) {
+			textPlaca.setText("");
+			textMarca.setText("");
+			textModelo.setText("");
+			textCor.setText("");
+			textQtdRodas.setText("");
+			textVelMax.setText("");
+			textQtdPist.setText("");
+			textPotencia.setText("");
+			textCargaMax.setText("");
+			
+			 if(BDVeiculos.excluiCargaPorPlaca(carga)) {
+		            JOptionPane.showMessageDialog(null,"Registro excluído com sucesso." , "INFORMAÇÃO",  JOptionPane.INFORMATION_MESSAGE);
+		        } else {
+		        	JOptionPane.showMessageDialog(null,"Registro não existe na base." , "ERRO",  JOptionPane.ERROR_MESSAGE);
+		        }
+			textPlaca.requestFocus();
+		}
+		if(e.getSource().equals(buttonSair)) {
+			janelaConsultaCarga.dispose();
+		}
+	}
+}

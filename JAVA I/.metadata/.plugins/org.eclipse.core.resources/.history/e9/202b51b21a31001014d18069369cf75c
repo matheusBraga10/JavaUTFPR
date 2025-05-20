@@ -1,0 +1,146 @@
+package com.exercicios.java.exercicio09;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class JanelaImpTodosPasseio implements ActionListener {
+
+    private JFrame janelaImpTodospasseio = new JFrame();
+
+    private String[] colunasImpTodospasseio = {"Placa", "Marca","Modelo","Cor","Qtd.Rodas",
+    		"Veloc Máx","Qtd.Pist","Potência","Qtd.Passageiros"};
+
+    private DefaultTableModel modelImpTodospasseio = new DefaultTableModel(colunasImpTodospasseio,0);
+    private JTable tableDadosImpTodospasseio = new JTable(modelImpTodospasseio);
+    private JScrollPane barraRolagemListaImpTodospasseio = new JScrollPane(tableDadosImpTodospasseio);
+
+    private JButton btImprimirTodos = new JButton();
+    private JButton btExcluirTodos = new JButton();
+    private JButton btSair = new JButton();
+
+    BDVeiculos bdVeiculos = new BDVeiculos();
+    private List<Passeio> listaPasseio = new ArrayList<>();
+    
+    private int larg = 900, alt =600;
+
+    public void carregaJanelaImpTodosPasseio() {
+
+        janelaImpTodospasseio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janelaImpTodospasseio.setLayout(new GridLayout(4,1,10,10));
+        janelaImpTodospasseio.setSize(larg,alt);
+        janelaImpTodospasseio.setTitle("Exemplo de JPanel");
+        janelaImpTodospasseio.getContentPane().setBackground(Color.WHITE);
+
+        janelaImpTodospasseio.setTitle("Imprimir/Excluir todos");
+
+        btImprimirTodos.setText("Imprimir Todos");
+        btImprimirTodos.setMnemonic('I');
+        btImprimirTodos.addActionListener(this);
+
+        btExcluirTodos.setText("Excluir Todos");
+        btExcluirTodos.setMnemonic('E');
+        btExcluirTodos.addActionListener(this);
+        btExcluirTodos.setPreferredSize(new Dimension(40, 40));
+
+        btSair.setText("Sair");
+        btSair.setMnemonic('S');
+        btSair.addActionListener(this);
+
+        janelaImpTodospasseio.add(barraRolagemListaImpTodospasseio);
+        janelaImpTodospasseio.add(btImprimirTodos);
+        janelaImpTodospasseio.add(btExcluirTodos);
+        janelaImpTodospasseio.add(btSair);
+
+        janelaImpTodospasseio.setVisible(true);
+    }
+
+    public void carregaJanelaImpTodospasseio() {
+    	
+    	janelaImpTodospasseio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	janelaImpTodospasseio.setLayout(new GridLayout(4,1,10,10));
+    	janelaImpTodospasseio.setSize(larg,alt);
+    	janelaImpTodospasseio.setTitle("Exemplo de JPanel");
+    	janelaImpTodospasseio.getContentPane().setBackground(Color.WHITE);
+    	
+    	janelaImpTodospasseio.setTitle("Imprimir/Excluir todos");
+    	
+    	btImprimirTodos.setText("Imprimir Todos");
+    	btImprimirTodos.setMnemonic('I');
+    	btImprimirTodos.addActionListener(this);
+    	
+    	btExcluirTodos.setText("Excluir Todos");
+    	btExcluirTodos.setMnemonic('E');
+    	btExcluirTodos.addActionListener(this);
+    	btExcluirTodos.setPreferredSize(new Dimension(40, 40));
+    	
+    	btSair.setText("Sair");
+    	btSair.setMnemonic('S');
+    	btSair.addActionListener(this);
+    	
+    	janelaImpTodospasseio.add(barraRolagemListaImpTodospasseio);
+    	janelaImpTodospasseio.add(btImprimirTodos);
+    	janelaImpTodospasseio.add(btExcluirTodos);
+    	janelaImpTodospasseio.add(btSair);
+    	
+    	janelaImpTodospasseio.setVisible(true);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent act) {
+
+        if(act.getSource().equals(btImprimirTodos)) {
+
+            imprimeDadosPessoa();
+
+        }else if(act.getSource().equals(btExcluirTodos)) {
+
+            if(excluirTodosDados()) {
+
+                JOptionPane.showMessageDialog(null,"Dados removidos" , "Sucesso",  JOptionPane.INFORMATION_MESSAGE);
+                DefaultTableModel model = new DefaultTableModel(colunasImpTodospasseio,0);
+                tableDadosImpTodospasseio.setModel(model);
+            }
+
+
+        }else if(act.getSource().equals(btSair)) {
+            janelaImpTodospasseio.dispose();
+        }
+    }
+    public void imprimeDadosPessoa() {
+
+        if(listaPasseio.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Não há veículos de passeio cadastrados." , "ERRO",  JOptionPane.ERROR_MESSAGE);
+
+        }else {
+            modelImpTodospasseio = new DefaultTableModel(colunasImpTodospasseio,0);
+			
+			bdVeiculos.imprimeTodosPasseio(listaPasseio);
+
+            tableDadosImpTodospasseio.setModel(modelImpTodospasseio);
+        }
+    }
+
+    public boolean excluirTodosDados() {
+
+        if(listaPasseio.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Não há dados a serem removidos." , "ERRO",  JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else {
+
+            listaPasseio = new ArrayList<>();
+        }
+        return true;
+    }
+}

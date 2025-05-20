@@ -1,0 +1,39 @@
+package com.exercicios.java.exercicio09;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class JanelaInicial implements ActionListener{
+	
+	
+	private JFrame janelaInicial = new JFrame();
+	private JLabel labelInicial = new JLabel();
+	private JButton buttonCarga = new JButton();
+	private JButton buttonPasseio = new JButton();
+	
+	public void carregarJanelaInicial() {
+		
+		janelaInicial.setSize(600,300);
+		janelaInicial.setTitle("SISTEMA DE GERENCIAMENTO DE VEICULOS");
+		
+		labelInicial.setText("Clique em uma das opções para começar.");
+		
+		janelaInicial.add(labelInicial);
+		janelaInicial.add(buttonCarga);
+		janelaInicial.add(buttonPasseio);
+		
+		
+		janelaInicial.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

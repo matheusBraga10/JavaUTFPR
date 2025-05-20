@@ -4,6 +4,12 @@
 	<item key="replaceBarOpen" value="true"/>
 	<list key="replacehistory">
 		<item value="carga"/>
+		<item value="Carga"/>
+		<item value="JTextField(20)"/>
+		<item value="text"/>
+		<item value="JTextField"/>
+		<item value="passeio"/>
+		<item value="public"/>
 		<item value="cadastroCarga"/>
 		<item value="passeio5"/>
 		<item value="passeio4"/>
@@ -11,19 +17,30 @@
 		<item value="passeio2"/>
 	</list>
 	<list key="searchhistory">
+		<item value="janelaCadCarga"/>
+		<item value="passeio"/>
+		<item value="Passeio"/>
+		<item value="buttonConsulta"/>
+		<item value="JTextField()"/>
+		<item value="label"/>
+		<item value="JLabel"/>
+		<item value="carga"/>
+		<item value="listaCarga"/>
+		<item value="bdVeiculos"/>
+		<item value="javax.swing."/>
+		<item value="private"/>
+		<item value="static"/>
 		<item value="imprimeCarga"/>
 		<item value="cadastroCarga"/>
-		<item value="cadastroPasseio"/>
-		<item value="verificaPlaca"/>
-		<item value="break"/>
-		<item value="passeio"/>
-		<item value="cadCarga"/>
-		<item value="passeio1"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="selection" value=""/>
 		<list key="findhistory">
 			<item value=""/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="724"/>
+		<item key="DIALOG_Y_ORIGIN" value="392"/>
 	</section>
 </section>

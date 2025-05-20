@@ -1,0 +1,72 @@
+1747145416424	Copy package
+1747156303566	Extract method 'ajustaJanela'
+1747156574844	Rename method 'ajustaJanela'
+1747157996558	Rename field 'rtCod'
+1747158014330	Rename field 'lbCod'
+1747158029017	Rename field 'cxCod'
+1747158044127	Rename field 'frame'
+1747158094280	Rename field 'btSair'
+1747166365252	Rename local variable 'largRt'
+1747166376958	Rename local variable 'altRt'
+1747167008827	Rename field 'buttonSair'
+1747167417118	Rename field 'buttonImprTodosCarga'
+1747169482923	Rename type 'exemploPessoa'
+1747184719384	Delete element
+1747255138059	Rename field 'jan1'
+1747255814288	Rename field 'colunas'
+1747255827805	Rename field 'model'
+1747255842498	Rename field 'tableDados'
+1747255852752	Rename field 'barraRolagemLista'
+1747255895789	Rename field 'janelaPrincipal'
+1747256231385	Rename type 'JanelaJPanel'
+1747263774935	Rename type 'JanelaJImpTodosCarga'
+1747263803990	Copy compilation unit
+1747263901491	Rename field 'Passeio'
+1747268947788	Rename package 'com.exercicios.java.exercicio09.gui'
+1747268961682	Move compilation units
+1747269034827	Move compilation units
+1747269077827	Copy compilation unit
+1747269093520	Delete element
+1747269100726	Move compilation unit
+1747269111038	Delete element
+1747269142015	Delete element
+1747269177445	Delete element
+1747269430920	Rename type 'janelaVeiculosPasseio'
+1747271355308	Rename field 'buttonCadastro'
+1747271364525	Rename field 'buttonConsulta'
+1747271379377	Rename field 'buttonImprime'
+1747271474119	Rename field 'jpanelP'
+1747271524939	Rename method 'carregarJanelaVeiculosPasseio'
+1747271665404	Rename field 'labelInicial'
+1747274754189	Delete element
+1747333253209	Copy compilation unit
+1747333472582	Rename field 'janelaCadastroPasseio'
+1747333491796	Rename field 'buttonCadastrar'
+1747333509426	Rename field 'buttonLimpar'
+1747333534569	Rename field 'janelaCadPasseio'
+1747333778201	Rename method 'carregarJanelaCadastroPasseio'
+1747338911965	Rename method 'imprimeDadosPessoa'
+1747344600402	Rename field 'bdVeiculos'
+1747352594253	Delete element
+1747352618059	Copy compilation unit
+1747352667612	Copy compilation unit
+1747352677125	Copy compilation unit
+1747352684795	Copy compilation unit
+1747352696099	Move compilation units
+1747352709855	Move compilation units
+1747352751932	Rename field 'janelaVeiculosPasseio'
+1747352991889	Rename method 'carregarJanelaVeiculosPasseio'
+1747353054257	Rename field 'janelaPasseio'
+1747353534330	Rename field 'labelQtdPassageiros'
+1747353551718	Rename field 'labelTara'
+1747353579059	Rename field 'textQtdPassageiros'
+1747353588918	Rename field 'textTara'
+1747353861400	Rename field 'labelQtdPassageiros'
+1747353877488	Rename field 'labelTara'
+1747353896143	Rename field 'textQtdPassageiros'
+1747353906705	Rename field 'textTara'
+1747354206886	Rename field 'modelImpTodoscarga'
+1747354241806	Rename field 'tableDadosImpTodoscarga'
+1747354250191	Rename field 'barraRolagemListaImpTodoscarga'
+1747355218470	Extract method 'verificaPlacaPasseio'
+1747355288356	Extract method 'verificaPlacaCarga'

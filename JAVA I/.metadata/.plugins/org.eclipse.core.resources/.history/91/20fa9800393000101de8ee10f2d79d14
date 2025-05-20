@@ -1,0 +1,179 @@
+package com.exercicios.java.exercicio09;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+public class MenuVeiculos {
+
+	private Passeio passeio;
+	private Carga carga;
+
+	private Leitura leitura = new Leitura();	
+	private BDVeiculos bdVeiculos = new BDVeiculos();
+	private JFrame janelaPrincipal = new JFrame();
+	private JLabel titulo = new JLabel();
+	private JLabel labelCod = new JLabel();
+	private JTextField caixaTextCod = new JTextField();
+	private JButton buttonCadastroPasseio = new JButton();
+	private JButton buttonCadastroCarga = new JButton();
+	private JButton buttonImpTodosPasseio = new JButton();
+	private JButton buttonImpTodosCarga = new JButton();
+	private JButton buttonImpPlacaPasseio = new JButton();
+	private JButton buttonImpPlacaCarga = new JButton();
+	private JButton buttonExcPlacaPasseio = new JButton();
+	private JButton buttonExcPlacaCarga = new JButton();
+	private JButton buttonSair = new JButton();
+	private JMenu menuPrincipal = new JMenu();
+	private JMenuBar barraMenu = new JMenuBar();
+	private JMenuItem itMenuSair = new JMenuItem();
+
+
+	public void geraMenu() throws VelocException {
+
+		int opcao = 0;
+		int largFrame = 1000, altFrame = 800;  
+		int largLabel = 20, altLabel = 50;
+		janelaPrincipal.setSize(largFrame, altFrame);
+		janelaPrincipal.setTitle("Menu de cadastramento veicular");
+		janelaPrincipal.setDefaultCloseOperation(janelaPrincipal.EXIT_ON_CLOSE);
+
+		titulo.setText("--- Sistema de gestão de Veículos - Menu Inicial ---");
+		labelCod.setText("\n\nClique na opção desejada: ");
+		labelCod.setSize(largLabel, altLabel);
+
+		buttonCadastroPasseio.setText("Cadastrar veículo de passeio");
+		buttonCadastroCarga.setText("Cadastrar veículo de carga");
+		buttonImpTodosPasseio.setText("Imprimir todos os veículos de passeio");
+		buttonImpTodosCarga.setText("Imprimir todos os veículos de carga");
+		buttonImpPlacaPasseio.setText("Buscar veículo de passeio por placa");
+		buttonImpPlacaCarga.setText("Buscar veículo de carga por placa");
+		buttonExcPlacaPasseio.setText("Excluir veículo de passeio por placa");
+		buttonExcPlacaCarga.setText("Excluir veículo de carga por placa");
+		buttonSair.setText("Sair do programa");
+
+		menuPrincipal.add(itMenuSair);
+		barraMenu.add(menuPrincipal);
+		
+		caixaTextCod.setColumns(10);
+		janelaPrincipal.setJMenuBar(barraMenu);
+		janelaPrincipal.add(titulo); 
+		janelaPrincipal.add(labelCod); 
+		janelaPrincipal.add(caixaTextCod);
+		janelaPrincipal.add(buttonCadastroPasseio);
+		janelaPrincipal.add(buttonCadastroCarga);
+		janelaPrincipal.add(buttonImpTodosPasseio);
+		janelaPrincipal.add(buttonImpTodosCarga);
+		janelaPrincipal.add(buttonImpPlacaPasseio);
+		janelaPrincipal.add(buttonImpPlacaCarga);
+		janelaPrincipal.add(buttonExcPlacaPasseio);
+		janelaPrincipal.add(buttonExcPlacaCarga);
+		janelaPrincipal.add(buttonSair);
+		
+		buttonCadastroPasseio.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Escolheu o BOTAO Sair","Cadastro de veículo de passeio", 1);
+				janelaPrincipal.dispose();
+
+			}
+		});
+
+		itMenuSair.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				JOptionPane.showMessageDialog(null, "Escolheu o ITEM DE MENU Sair","Item de Menu", 1);
+				janelaPrincipal.dispose();
+			}
+		}
+				);
+
+
+		janelaPrincipal.setLayout(new FlowLayout());
+		janelaPrincipal.setVisible(true);
+
+
+		//--------------------------------------------------------------
+		boolean continua = true;
+
+		while(continua) {
+			bdVeiculos.exibeMenuInicial();
+			try {
+				opcao = Integer.parseInt(leitura.entDados("\nEscolha uma opcao -> "));
+			} catch (NumberFormatException e) {
+				System.out.println("O valor deve ser um número inteiro - press <ENTER>");
+				leitura.entDados("");
+				continue;
+			}
+
+			switch (opcao) {
+			case 1: {
+				bdVeiculos.cadastraVeiculosPasseio(opcao);
+				break;
+			} case 2: {
+				bdVeiculos.cadastraVeiculosCarga(opcao);
+				break;
+			} case 3: {
+				System.out.println("\nImpressao de todos os Veiculos de Passeio!");
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				bdVeiculos.imprimeTodosPasseio();
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				leitura.entDados("\nSem mais Veiculos de Passeio para imprimir - press <ENTER>");
+				break;
+			} case 4: {
+				System.out.println("\nImpressao de todos os Veiculos de Carga!");
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				bdVeiculos.imprimeTodosCarga();
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				leitura.entDados("\nSem mais Veiculos de Carga para imprimir - press <ENTER>");
+				break;
+			} case 5: {
+				passeio = new Passeio();
+				System.out.println("\nConsulta pela Placa do Veiculo de Passeio.");
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				passeio.setPlaca(leitura.entDados("\nInforme a placa a ser pesquisada: "));
+				bdVeiculos.imprimePasseioPorPlaca();
+				break;
+			} case 6: {
+				carga = new Carga();
+				System.out.println("\nConsulta pela Placa do Veiculo de Carga.");
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				carga.setPlaca(leitura.entDados("\nInforme a placa a ser pesquisada: "));
+				bdVeiculos.imprimeCargaPorPlaca();
+				break;
+			} case 7: {
+				passeio = new Passeio();
+				System.out.println("\nExcluir pela Placa do Veiculo de Passeio.");
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				passeio.setPlaca(leitura.entDados("\nInforme a placa a ser excluída: "));
+				bdVeiculos.excluiPasseioPorPlaca(passeio);
+				break;
+			} case 8: {
+				carga = new Carga();
+				System.out.println("\nExcluir pela Placa do Veiculo de Carga.");
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+				carga.setPlaca(leitura.entDados("\nInforme a placa a ser excluída: "));
+				bdVeiculos.excluiCargaPorPlaca(carga);
+				break;
+			} case 9: {
+				continua = false;
+				break;
+			} default: {
+				System.out.println("O valor deve ser entre 1 e 9 <press ENTER>.");
+				leitura.entDados("");
+				break;
+			}
+
+			}
+		}
+	}
+
+}

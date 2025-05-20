@@ -1,0 +1,18 @@
+package com.exercicios.java.exercicio09;
+
+import com.exercicios.java.exercicio09.janelasGui.JanelaInicial;
+
+public class Principal {
+
+    public static void main(String args[]) {
+
+//    	JanelaImpTodosCarga jpanelC = new JanelaImpTodosCarga();
+//    	jpanelC.carregaJanelaImpTodosCarga();
+//    	JanelaImpTodosPasseio jpanelP = new JanelaImpTodosPasseio();
+//    	jpanelP.carregaJanelaImpTodospasseio();
+    	JanelaInicial janelaInicial = new JanelaInicial();
+    	janelaInicial.carregarJanelaInicial();
+    }
+
+
+}

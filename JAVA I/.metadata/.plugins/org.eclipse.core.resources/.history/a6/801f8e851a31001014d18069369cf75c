@@ -1,0 +1,14 @@
+package com.exercicios.java.exercicio09;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class JanelaInicial implements ActionListener{
+	
+	
+	private JFrame janelaInicial = new JFrame();
+	
+	JanelaInicial.setSize(400,300);
+	
+}
