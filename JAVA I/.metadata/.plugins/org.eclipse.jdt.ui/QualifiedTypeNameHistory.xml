@@ -51,4 +51,12 @@
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio08.BDVeiculos"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio09.backEnd.BDVeiculos"/>
     <fullyQualifiedTypeName name="com.exercicios.java.exercicio09.janelasGui.carga.JanelaVeiculosCarga"/>
+    <fullyQualifiedTypeName name="com.avaliacao.java.interfaces.Verifica"/>
+    <fullyQualifiedTypeName name="java.security.cert.CertPathValidatorResult"/>
+    <fullyQualifiedTypeName name="com.avaliacao.java.entity.Endereco"/>
+    <fullyQualifiedTypeName name="com.avaliacao.java.entity.ClienteBanco"/>
+    <fullyQualifiedTypeName name="com.avaliacao.java.exceptions.NumException"/>
+    <fullyQualifiedTypeName name="com.avaliacao.java.entity.PessoaJuridica"/>
+    <fullyQualifiedTypeName name="com.avaliacao.java.entity.PessoaFisica"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
