@@ -21,15 +21,15 @@ public class ExemploSupplier {
 		final var nomeSupplier = NomeSupplier.getNomeFromSomewhere("Qualquer nome");
 		final var nomeSupplierNull = NomeSupplier.getNomeFromSomewhere("");
 		
-		final Supplier<NomeSupplier> supplier = () -> NomeSupplier.getNomes().get(0);
-		
-		if( nomeSupplier != null) {
-			System.out.println(nomeSupplier.getNome());
-		} if(nomeSupplierNull != null ) {
-			System.out.println(nomeSupplierNull.getNome());
-		} if(nomeSupplierNull == null || nomeSupplier != null) {
-			System.out.println("Nenhum nome encontrado.");
-		}
+//		final Supplier<NomeSupplier> supplier = () -> NomeSupplier.getNomes().get(0);
+//		
+//		if( nomeSupplier != null) {
+//			System.out.println(nomeSupplier.getNome());
+//		} if(nomeSupplierNull != null ) {
+//			System.out.println(nomeSupplierNull.getNome());	
+//		} if(nomeSupplierNull == null || nomeSupplier != null) {
+//			System.out.println("Nenhum nome encontrado.");
+//		}
 		// Ana
 		// João
 		// Maria
