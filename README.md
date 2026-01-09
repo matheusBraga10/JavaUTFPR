@@ -35,3 +35,12 @@ public class ClienteController {
             .orElse(ResponseEntity.notFound().build());
     }
 }
+
+JavaUTFPR/
+├── ejb-demo/         # Enterprise JavaBeans
+├── rmi-service/      # Remote Method Invocation
+├── microservices/    # Spring Boot + Docker
+└── jms-messaging/    # Message-Driven Beans
+
+
+
