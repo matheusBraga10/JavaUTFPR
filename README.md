@@ -174,7 +174,6 @@ JAVA
 4. **Teste**: `docker-compose up`
 5. **Commit**: `git commit -m "Add UTFPR Java Enterprise projects + Docker"`
 
-Seu repo **JavaUTFPR** ficará **pós-graduação nível** com **Jakarta EE**, **microservices** e **benchmarks production**! 🚀[1]
 
 Professor: UTFPR | Aluno: Matheus Felipe Braga | Prodemge Java Pleno
 
