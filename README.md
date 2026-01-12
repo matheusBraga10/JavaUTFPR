@@ -4,7 +4,7 @@
 
 # Pós-Graduação UTFPR - Tecnologias Java Enterprise
 
-**Projetos oficiais** da **Pós-Graduação em Tecnologias Java** - **UTFPR 2025/2026**. **EJB, RMI, JMS, Microservices** com **Jakarta EE 10** + **Spring Boot 3.2** + **Docker/K8s**.[attached_file:1]
+**Projetos oficiais** da **Pós-Graduação em Tecnologias Java** - **UTFPR 2025/2026**. **EJB, RMI, JMS, Microservices** com **Jakarta EE 10** + **Spring Boot 3.2** + **Docker/K8s**.
 
 ## 🎯 Disciplinas & Tecnologias
 
