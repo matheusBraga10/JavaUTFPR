@@ -166,15 +166,6 @@ JavaPOO
 JAVA
 
 
-## Deploy Imediato
-
-1. **Copie README.md** em `JavaUTFPR/`
-2. **Crie estrutura** `ejb-demo/`, `microservices/`, etc.
-3. **Adicione docker-compose.yml**
-4. **Teste**: `docker-compose up`
-5. **Commit**: `git commit -m "Add UTFPR Java Enterprise projects + Docker"`
-
-
 Professor: UTFPR | Aluno: Matheus Felipe Braga | Prodemge Java Pleno
 
 
